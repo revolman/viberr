@@ -5,9 +5,7 @@ FROM python:3.7.3
 RUN mkdir -p /srv/www/viberr
 WORKDIR /srv/www/viberr
 
-RUN mkdir -p /var/log/gunicorn && \
-        touch /var/log/gunicorn/access.log && \
-        touch /var/log/gunicorn/error.log;
+RUN mkdir -p /var/log/gunicorn
 
 # RUN pip install -r requirements.txt
 # Установка зависимостей
@@ -27,11 +25,11 @@ COPY . /srv/www/viberr
 RUN chown -R www-data:www-data /srv/www/viberr
 USER www-data
 
+#Сбор статики
+RUN python manage.py collectstatic --noinput
+
 # Запуск сервера
-CMD gunicorn --access-logfile /var/log/acces.log \
-	--error-logfile /var/log/error.log \
-	-c gunicorn.py Project1.wsgi
+CMD gunicorn -c gunicorn.py Project1.wsgi
 
 # Открыть порт 8000
 EXPOSE 8000
-

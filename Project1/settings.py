@@ -27,10 +27,13 @@ SECRET_KEY = 'gd1ab&r-k!r=+vehsysw4li(+1b19r)!$7q5ui!y1^o7hu(0j4'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '10.0.0.10',
-    '127.0.0.1',
-    '192.168.0.156',
-    'site-1.szlk.lan',
+     '*'
+#    '10.0.0.10',
+#    '127.0.0.1',
+#    '192.168.0.156',
+#    '192.168.0.161',
+#    '10.200.0.0/16',
+#    'site-1.szlk.lan',
 ]
 
 # CACHES = {
@@ -98,16 +101,15 @@ DATABASES = {
 #       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
         'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'db',
-#        'USER': 'db',
-#        'PASSWORD': 'dbpw',
-#        'HOST': 'MySQL_Prod',
-#        'PORT': 3306,
-	'NAME': os.environ.get('DB_DATABASE'),
-	'USER': os.environ.get('DB_USERNAME'),
-	'PASSWORD': os.environ.get('DB_PASSWORD'),
-	'HOST': os.environ.get('DB_HOST'),
-	
+        'NAME': 'db',
+        'USER': 'db',
+        'PASSWORD': 'dbpw',
+        'HOST': 'mysql',
+        'PORT': 3306,
+#	'NAME': os.environ.get('DB_DATABASE'),
+#	'USER': os.environ.get('DB_USERNAME'),
+#	'PASSWORD': os.environ.get('DB_PASSWORD'),
+#	'HOST': os.environ.get('DB_HOST'),	
     }
 }
 
